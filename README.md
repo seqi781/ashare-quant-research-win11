@@ -223,6 +223,44 @@ $env:ASHARE_DATA_URL = "https://your-domain/path/to/data.tar.gz"
 .\scripts\bootstrap_from_data_package_win.ps1
 ```
 
+## 面向普通用户的新网页入口
+
+这个入口适合“只想看结论、不想看复杂指标”的用户：
+
+```bash
+./scripts/run_user_quant_app.sh
+```
+
+网页会提供三件事：
+
+- 选一个日期，查看当天推荐买什么、预计涨跌、建议买多少、什么时候按规则卖
+- 从这个日期一直模拟到最新日期，直接看赚亏、收益率、最大回撤、交易次数和胜率
+- 输入某只股票和某一天，检查系统当时的预测是否准确，并看模拟买卖结果
+
+## 生成 HTML 报告和演示页
+
+推荐直接用脚本：
+
+```bash
+./scripts/generate_user_report.sh 2025-01-02 600397 2025-01-02 1000000
+```
+
+等价命令：
+
+```bash
+PYTHONPATH=src uv run python -m ashare_quant.reporting.user_report_cli \
+  --start-date 2025-01-02 \
+  --stock 600397 \
+  --stock-date 2025-01-02 \
+  --initial-capital 1000000
+```
+
+输出文件：
+
+- `reports/user_friendly_quant_report.html`
+- `reports/user_friendly_quant_demo.html`
+- `reports/user_friendly_quant_report.json`
+
 ## Web 入口
 
 ### 决策应用

@@ -17,3 +17,17 @@ risk:
   stop_loss: -0.07
   take_profit_partial: 0.12
   max_positions: 5
+
+rolling_backtest:
+  start_date: '2024-01-01'
+  end_date: '2026-03-13'
+  train_window_days: 504
+  rebalance_frequency_days: 5
+  prediction_horizon_days: 10
+  retrain_frequency_days: 20
+  training_mode: fixed
+  top_n: 10
+  weighting: equal
+  benchmark: 000300.SH
+  benchmark_path: ''
+  min_train_rows: 3000
